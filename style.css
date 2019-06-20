@@ -1,0 +1,101 @@
+body {
+    max-width: 500px;
+    margin: 0 auto;
+}
+button {
+    padding: 10px 22px;
+    margin: 5px 2px;
+    font-size: 1em;
+    border: none;
+    background: #e7e7e7;
+}
+table td {
+    border: 1px solid grey;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-size: 30px;
+    position: relative;
+} 
+button.selected {
+    background: #9797ff;
+}
+table.active .blocks.highlight {
+    background: #c8f2ff;
+}
+table.active .blocks.set, .blocks.set {
+    background: #7575ff;
+}
+#total {
+    font-size: 2em;
+} 
+#ones::before {
+    content: "1";
+    font-size: 0.5em;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}  
+#twos::before {
+    content: "2";
+    font-size: 0.5em;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}  
+#threes::before {
+    content: "3";
+    font-size: 0.5em;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}  
+#fours::before {
+    content: "4";
+    font-size: 0.5em;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}  
+#fives::before {
+    content: "5";
+    font-size: 0.5em;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}  
+#sixes::before {
+    content: "6";
+    font-size: 0.5em;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}  
+#straights::before {
+    content: "straight";
+    font-size: 0.5em;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}  
+#flush::before {
+    content: "flush";
+    font-size: 0.5em;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+#poker::before {
+    content: "poker";
+    font-size: 0.5em;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+#grande::before {
+    content: "the big one";
+    font-size: 0.5em;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
