@@ -1,6 +1,13 @@
 body {
-    max-width: 500px;
+    max-width: 700px;
     margin: 0 auto;
+}
+.main {
+    float: left;
+    margin-right: 50px;
+}
+.side li {
+    line-height: 25px;
 }
 button {
     padding: 10px 22px;
