@@ -158,46 +158,66 @@ function tabulateFlush(score, scoreName) {
 	var flush = [];
 	for ( let die of selected ) {
 		flush.push( die.innerText);
-  }
-  var unique = [... new Set(flush) ];
-  if ( unique.length > 2 ) {
+    }
+    var unique = [... new Set(flush) ];
+    if ( unique.length > 2 ) {
 		score = 0;
-  } else {
-  	var num1 = unique[0];
-    var num2 = unique[1];
+    } else {
+        var num1 = unique[0];
+        var num2 = unique[1];
+            
+        const num1Count = flush.filter(i => i === num1).length;
+        const num2Count = flush.filter(i => i === num2).length;
 		
-    const num1Count = flush.filter(i => i === num1).length;
-    const num2Count = flush.filter(i => i === num2).length;
-		
-    if ( ( num1Count == 3 && num2Count == 2 ) 
-    || ( num1Count == 2 && num2Count == 3 )) {
-    	if ( rollTurn == 1 ) {
-    		score = 35;
-			} else {
-  	  	score = 30;
-			}
-		}
-	}
+        if ( ( num1Count == 3 && num2Count == 2 ) 
+        || ( num1Count == 2 && num2Count == 3 )) {
+            if ( rollTurn == 1 ) {
+                score = 35;
+            } else {
+                score = 30;
+            }
+        }
+    }
 	scoring(score, scoreName)
 }
 
-
 function tabulatePoker(score, scoreName) {
-	var poker = [];
+    var poker = [];
+    
 	for ( let die of selected ) {
 		poker.push( die.innerText);
-  }
-  var pokerUnique = [... new Set(poker) ];
-  if ( pokerUnique.length != 1 || poker.length < 4 ) {
-    score = 0;
-  } else {
-
-    if ( rollTurn == 1 ) {
-      score = 45;
-    } else {
-      score = 40;
     }
-	}
+    const pokerUnique = [... new Set(poker) ];
+    if ( pokerUnique.length > 1 ) {
+        const pok1 = pokerUnique[0];
+        const pok2 = pokerUnique[1];
+        const pok1Count = poker.filter(i => i === pok1).length;
+        const pok2Count = poker.filter(i => i === pok2).length;
+
+        console.log(pokerUnique.length);
+        console.log(pok1Count);
+        console.log(pok2Count);
+        if ( ( pok1Count == 4 && pok2Count == 1 ) || ( pok1Count == 1 && pok2Count == 4 ) || pok1Count == 5 )  {
+            if ( rollTurn == 1 ) {
+                score = 45;
+            } else {
+                score = 40;
+            }
+        } else {
+            score = 0;
+        }
+    }
+    console.log( pokerUnique.length);
+    console.log(poker.length);
+    if ( pokerUnique.length == 1 && poker.length == 4 ) {
+        if ( rollTurn == 1 ) {
+            score = 45;
+        } else {
+            score = 40;
+        }
+    }
+
+    console.log(score);
 	scoring(score, scoreName)
 }
 
