@@ -106,3 +106,10 @@ table.active .blocks.set, .blocks.set {
     right: 5px;
     bottom: 5px;
 }
+#grandeDoble::before {
+    content: "double big one";
+    font-size: 0.5em;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}

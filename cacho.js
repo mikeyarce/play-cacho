@@ -6,6 +6,7 @@ const table = document.getElementById("table");
 const numbers = document.getElementById("numbers");
 const blocks = document.getElementsByClassName('blocks');
 const total = document.getElementById("total");
+const grande = document.getElementById("grande");
 
 var totalScore = 0;
 var selected = numbers.getElementsByClassName('selected');
@@ -44,11 +45,17 @@ function rollDice(min, max) {
 function setScore() {
     addScore.onclick = function addScore() {
         table.classList.add('active');
+        var grande = blocks.length - 2;
+        var grandeDoble = blocks.length - 1;
+        
         for (let block of blocks) {
             if (block.innerText == '') {
                 block.classList.add('highlight');
             }
         }
+        if ( blocks[grande].innerText == '' ) {
+            blocks[grandeDoble].classList.remove('highlight');
+        }    
     }
     for (let block of blocks) {
         block.onclick = function () {
@@ -181,7 +188,7 @@ function tabulateFlush(score, scoreName) {
             }
         }
     }
-    scoring(score, scoreName)
+    scoring(score, scoreName);
 }
 
 function tabulatePoker(score, scoreName) {
@@ -221,7 +228,7 @@ function tabulatePoker(score, scoreName) {
     }
 
     console.log(score);
-    scoring(score, scoreName)
+    scoring(score, scoreName);
 }
 
 function laGrande(score, scoreName) {
@@ -241,27 +248,28 @@ function laGrande(score, scoreName) {
         }
     }
     console.log(typeof (score));
-    scoring(score, scoreName)
+    scoring(score, scoreName);
 }
 
 function laGrandeDoble(score, scoreName) {
-    var grande = [];
+    var grandeDoble = [];
     for (let die of selected) {
-        grande.push(die.innerText);
+        grandeDoble.push(die.innerText);
     }
-    var grandeUnique = [...new Set(grande)];
-    console.log(grandeUnique.length);
-    if (grandeUnique.length != 1 || grande.length != 5) {
+    var grandeDobleUnique = [...new Set(grandeDoble)];
+    if (grandeDobleUnique.length != 1 || grandeDoble.length != 5) {
         score = 0;
     } else {
         if (rollTurn == 1) {
             score = "You Win!";
         } else {
-            score = 50;
+            score = 100;
         }
     }
     console.log(typeof (score));
-    scoring(score, scoreName)
+    if ( grande.innerText != '' ) {
+        scoring(score, scoreName);
+    }
 }
 
 
@@ -315,6 +323,10 @@ for (var i = 0; i < blocks.length; i++) {
 
             case 'grande':
                 laGrande(0, grande);
+                break;
+
+            case 'grandeDoble':
+                laGrandeDoble(0, grandeDoble);
                 break;
 
         }
